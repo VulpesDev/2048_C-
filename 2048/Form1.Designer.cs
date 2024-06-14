@@ -119,7 +119,7 @@
             this.tile14.Name = "tile14";
             this.tile14.Size = new System.Drawing.Size(105, 105);
             this.tile14.TabIndex = 14;
-            this.tile14.Text = "2";
+            this.tile14.Text = "128";
             this.tile14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tile13
@@ -153,7 +153,7 @@
             this.tile12.Name = "tile12";
             this.tile12.Size = new System.Drawing.Size(105, 105);
             this.tile12.TabIndex = 12;
-            this.tile12.Text = "2";
+            this.tile12.Text = "0";
             this.tile12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tile11
@@ -187,7 +187,7 @@
             this.tile10.Name = "tile10";
             this.tile10.Size = new System.Drawing.Size(105, 105);
             this.tile10.TabIndex = 10;
-            this.tile10.Text = "2";
+            this.tile10.Text = "0";
             this.tile10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tile9
@@ -204,7 +204,7 @@
             this.tile9.Name = "tile9";
             this.tile9.Size = new System.Drawing.Size(105, 105);
             this.tile9.TabIndex = 9;
-            this.tile9.Text = "2";
+            this.tile9.Text = "8";
             this.tile9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tile8
@@ -221,7 +221,7 @@
             this.tile8.Name = "tile8";
             this.tile8.Size = new System.Drawing.Size(105, 105);
             this.tile8.TabIndex = 8;
-            this.tile8.Text = "2";
+            this.tile8.Text = "0";
             this.tile8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tile7
@@ -255,7 +255,7 @@
             this.tile6.Name = "tile6";
             this.tile6.Size = new System.Drawing.Size(105, 105);
             this.tile6.TabIndex = 6;
-            this.tile6.Text = "2";
+            this.tile6.Text = "0";
             this.tile6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tile5
@@ -272,7 +272,7 @@
             this.tile5.Name = "tile5";
             this.tile5.Size = new System.Drawing.Size(105, 105);
             this.tile5.TabIndex = 5;
-            this.tile5.Text = "2";
+            this.tile5.Text = "0";
             this.tile5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tile4
@@ -289,7 +289,7 @@
             this.tile4.Name = "tile4";
             this.tile4.Size = new System.Drawing.Size(105, 105);
             this.tile4.TabIndex = 4;
-            this.tile4.Text = "2";
+            this.tile4.Text = "0";
             this.tile4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tile3
@@ -306,7 +306,7 @@
             this.tile3.Name = "tile3";
             this.tile3.Size = new System.Drawing.Size(105, 105);
             this.tile3.TabIndex = 3;
-            this.tile3.Text = "2";
+            this.tile3.Text = "0";
             this.tile3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tile2
@@ -323,7 +323,7 @@
             this.tile2.Name = "tile2";
             this.tile2.Size = new System.Drawing.Size(105, 105);
             this.tile2.TabIndex = 2;
-            this.tile2.Text = "2";
+            this.tile2.Text = "16";
             this.tile2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tile1
@@ -340,7 +340,7 @@
             this.tile1.Name = "tile1";
             this.tile1.Size = new System.Drawing.Size(105, 105);
             this.tile1.TabIndex = 1;
-            this.tile1.Text = "2";
+            this.tile1.Text = "0";
             this.tile1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tile0
@@ -357,7 +357,7 @@
             this.tile0.Name = "tile0";
             this.tile0.Size = new System.Drawing.Size(105, 105);
             this.tile0.TabIndex = 0;
-            this.tile0.Text = "2";
+            this.tile0.Text = "256";
             this.tile0.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1

@@ -12,19 +12,24 @@ namespace _2048
 {
     public partial class Form1 : Form
     {
-        public static void MergeTiles(int[] array)
+        public bool MergeTiles(int[] array)
         {
+            bool value = false;
             for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] != 0 && array[i] == array[i - 1])
                 {
                     array[i - 1] *= 2;
                     array[i] = 0;
+                    value = true;
                 }
             }
+            return (value);
         }
-        public void MoveTiles(int[] array)
+        public bool MoveTiles(int[] array)
         {
+            bool value = false;
+
             int last0 = array.Length;
 
             for (int i = 1; i < array.Length; i++)
@@ -39,31 +44,37 @@ namespace _2048
                         array[i] = 0;
                         i = last0 + 1;
                         last0 = i;
+                        value = true;
                     }
                 }
                 Console.WriteLine($"printing with i: {i}");
                 PrintArray(array);
             }
+            return value;
         }
-        public void HorizontalManage(int[][] dArr, bool reverse)
+        public bool HorizontalManage(int[][] dArr, bool reverse)
         {
+            bool value = false;
             PrintIntArray2D(dArr);
             for (int i = 0; i < dArr.Length; i++)
             {
                 if (reverse)
                     ReverseArray(dArr[i]);
-                MoveTiles(dArr[i]);
-                MergeTiles(dArr[i]);
-                MoveTiles(dArr[i]);
+                bool step1 = MoveTiles(dArr[i]);
+                bool step2 = MergeTiles(dArr[i]);
+                bool step3 = MoveTiles(dArr[i]);
+                if (step1 || step2 || step3)
+                    value = true;
                 if (reverse)
                     ReverseArray(dArr[i]);
             }
             Console.WriteLine("\nArray after merging:");
             PrintIntArray2D(dArr);
-
+            return (value);
         }
-        public void VericalManage(int[][] dArr, bool reverse)
+        public bool VericalManage(int[][] dArr, bool reverse)
         {
+            bool value = false;
             PrintIntArray2D(dArr);
 
             int rows = dArr.Length;
@@ -82,9 +93,11 @@ namespace _2048
                 // Apply operations to the column
                 if (reverse)
                     ReverseArray(column);
-                MoveTiles(column);
-                MergeTiles(column);
-                MoveTiles(column);
+                bool step1 = MoveTiles(column);
+                bool step2 = MergeTiles(column);
+                bool step3 = MoveTiles(column);
+                if (step1 || step2 || step3)
+                    value = true;
                 if (reverse)
                     ReverseArray(column);
 
@@ -94,31 +107,38 @@ namespace _2048
                     dArr[row][col] = column[row];
                 }
             }
-
             Console.WriteLine("\nArray after vertical management:");
             PrintIntArray2D(dArr);
+            return (value);
+
         }
 
         public void ActionsManage(object sender, KeyEventArgs e)
         {
+            bool changed = false;
             switch (e.KeyCode)
             {
                 case Keys.Up:
-                    VericalManage(dArr, false);
+                    if (VericalManage(dArr, false))
+                        changed = true;
                     break;
                 case Keys.Down:
-                    VericalManage(dArr, true);
+                    if (VericalManage(dArr, true))
+                        changed = true;
                     break;
                 case Keys.Right:
-                    HorizontalManage(dArr, true);
+                    if (HorizontalManage(dArr, true))
+                        changed = true;
                     break;
                 case Keys.Left:
-                    HorizontalManage(dArr, false);
+                    if (HorizontalManage(dArr, false))
+                        changed = true;
                     break;
                 default:
                     break;
             }
-            GenerateRandomEmptyCell(dArr);
+            if (changed)
+                GenerateRandomEmptyCell(dArr);
             DrawImage();
         }
 
@@ -306,17 +326,6 @@ namespace _2048
             GenerateRandomEmptyCell(dArr);
             GenerateRandomEmptyCell(dArr);
             DrawImage();
-            
-            //int[] array = new int[] { 0, 2, 2, 4 };
-
-            //Console.WriteLine("Original array:");
-            //PrintArray(array);
-
-            //MergeTiles(array);
-            //MoveTiles(array);
-
-            //Console.WriteLine("\nArray after merging:");
-            //PrintArray(array);
         }
 
         void DrawImage()

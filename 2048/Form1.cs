@@ -63,11 +63,12 @@ namespace _2048
                     Control control = tableLayoutPanel1.GetControlFromPosition(col, row);
                     if (control != null && control is Label)
                     {
-                        float newFontSize = this.Size.Width * 0.08f;
+                        float newFontSize = this.Size.Width * 0.06f;
                         try
                         {
-                            if (control.Text != " ")
-                                newFontSize /= CountDigits(Convert.ToInt16(control.Text));
+                            int digitCount = CountDigits(Convert.ToInt32(control.Text));
+                            if (control.Text != " " && digitCount > 1)
+                                newFontSize /= digitCount * 0.55f;
                         }
                         catch (Exception ex)
                         {
@@ -118,7 +119,7 @@ namespace _2048
                         try
                         {
                             if (label.Text != " ")
-                                number = Convert.ToInt16(label.Text);
+                                number = Convert.ToInt32(label.Text);
                         }
                         catch (Exception ex)
                         {
@@ -133,15 +134,12 @@ namespace _2048
                             label.Font = style.Font;
                             if (label.Text == "0")
                                 label.Text = " ";
-                            //label.Text = number.ToString(); // Update label text to the number
                         }
                         else
                         {
-                            // Default style if number not found
                             label.ForeColor = Color.Black;
                             label.BackColor = SystemColors.Control;
                             label.Font = new Font("Arial", 16, FontStyle.Regular);
-                            //label.Text = number.ToString(); // Update label text to the number
                         }
                     }
                 }

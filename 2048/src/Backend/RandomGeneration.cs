@@ -11,46 +11,45 @@ namespace _2048
 
         public Coordinate(int row, int column)
         {
-            Row = row;
+            Row    = row;
             Column = column;
         }
     }
     internal class RandomGeneration
     {
+        /// <summary>
+        /// Random number picker generator based on weights(in this case I imagine them as percentages,
+        /// since the sum is 100). Customisable, however currenlty(by default) it's 90/10,
+        /// 90% for a 2 and 10% for a 4
+        /// </summary>
+        /// <returns> The picked number </returns>
         private static int GenerateRandomTileValue()
         {
-            Random random = new Random();
-            // Define probabilities (e.g., 2 tile with 90%, 4 tile with 10%)
-            int[] probabilities = { 2, 4 }; // Adjust according to your needs
-            int[] weights = { 90, 10 }; // Corresponding weights for probabilities (sum = 100)
+            int[]   probabilities = { 2, 4 };
+            int[]   weights       = { 90, 10 };
+            Random  random        = new Random();
 
-            // Calculate total weight
-            int totalWeight = weights.Sum();
+            int     cumulativeWeight = 0;
+            int     totalWeight      = weights.Sum();
+            int     randomNumber     = random.Next(0, totalWeight);
 
-            // Generate a random number between 0 and totalWeight
-            int randomNumber = random.Next(0, totalWeight);
-
-            // Determine the tile value based on random number and weights
-            int cumulativeWeight = 0;
             for (int i = 0; i < probabilities.Length; i++)
             {
                 cumulativeWeight += weights[i];
                 if (randomNumber < cumulativeWeight)
-                {
                     return probabilities[i];
-                }
             }
-
-            // Default return (shouldn't reach here under normal circumstances)
             return probabilities[0];
         }
-
+        /// <summary>
+        /// Generates a randomly picked tile value in randomly picked cooridnates
+        /// </summary>
+        /// <param name="board"> Array to modify </param>
         public static void GenerateRandomEmptyCell(int[][] board)
         {
-            Random random = new Random();
-            List<Coordinate> emptyCells = new List<Coordinate>();
+            Random              random     = new Random();
+            List<Coordinate>    emptyCells = new List<Coordinate>();
 
-            // Collect all empty cell coordinates
             for (int row = 0; row < board.Length; row++)
             {
                 for (int col = 0; col < board[row].Length; col++)
@@ -60,7 +59,6 @@ namespace _2048
                 }
             }
 
-            // Randomly select an empty cell
             if (emptyCells.Count > 0)
             {
                 int index = random.Next(0, emptyCells.Count);
@@ -70,7 +68,6 @@ namespace _2048
                 return;
             }
 
-            // No empty cells found (shouldn't happen in 2048 when spawning new tiles)
             throw new InvalidOperationException("No empty cells available on the board.");
         }
     }

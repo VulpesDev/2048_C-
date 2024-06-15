@@ -51,19 +51,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
-    <Compile Include="FrontEnd.cs">
+    <Compile Include="Backend\BackendForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Backend\ArrayManips.cs" />
+    <Compile Include="Backend\Algorithm.cs" />
+    <Compile Include="Frontend\Constants.cs" />
+    <Compile Include="Frontend\FrontendForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Frontend\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frontend\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Backend\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <Compile Include="Backend\RandomGeneration.cs" />
+    <EmbeddedResource Include="Frontend\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

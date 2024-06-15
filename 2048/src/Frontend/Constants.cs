@@ -6,7 +6,7 @@ namespace _2048
     public static class Constants
     {
         // Minimum window size
-        public const int MinWinSize = 350;
+        public const int MinWinSize = 545;
 
         // Font size calculations
         public const float BaseFontSizeMultiplier = 0.06f;

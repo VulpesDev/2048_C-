@@ -16,6 +16,7 @@ namespace _2048
 
         public void DrawImage()
         {
+            WriteScoreValue(scoreValueLabel);
             WriteIntValuesToLabels(dArr, tableLayoutPanel1);
             UI_Management();
         }

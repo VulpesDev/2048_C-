@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _2048.src.Backend;
+using System;
 using System.Windows.Forms;
 
 namespace _2048
@@ -66,6 +67,11 @@ namespace _2048
                 }
             }
             return result;
+        }
+
+        private void WriteScoreValue(Label scoreLabel)
+        {
+            scoreLabel.Text = Score.GetScore().ToString();
         }
     }
 }

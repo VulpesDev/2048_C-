@@ -1,4 +1,6 @@
-﻿namespace _2048
+﻿using _2048.src.Backend;
+
+namespace _2048
 {
     internal class Algorithm
     {
@@ -18,6 +20,7 @@
                     array[i - 1] *= 2;
                     array[i] = 0;
                     value = true;
+                    Score.AddToScore((uint)array[i-1]);
                 }
             }
             return (value);

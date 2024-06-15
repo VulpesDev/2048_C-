@@ -55,16 +55,11 @@ namespace _2048
             {
                 for (int col = 0; col < board[row].Length; col++)
                 {
-                    Console.WriteLine($"Cell check value: {board[row][col]}");
                     if (ArrayManips.IsCellEmpty(board, row, col))
-                    {
                         emptyCells.Add(new Coordinate(row, col));
-                        Console.WriteLine("hey!");
-                    }
                 }
             }
 
-            Console.WriteLine($"Count of empty cells: {emptyCells.Count}");
             // Randomly select an empty cell
             if (emptyCells.Count > 0)
             {

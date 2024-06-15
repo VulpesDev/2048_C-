@@ -2,9 +2,15 @@
 {
     internal class Algorithm
     {
+        /// <summary>
+        /// Merges all the adjacent numbers.
+        /// </summary>
+        /// <param name="array"> 1D int array </param>
+        /// <returns> True if any merge occured </returns>
         private static bool MergeTiles(int[] array)
         {
             bool value = false;
+
             for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] != 0 && array[i] == array[i - 1])
@@ -16,11 +22,17 @@
             }
             return (value);
         }
+
+        /// <summary>
+        /// Moves the numbers in a direction, enclosing all the
+        ///  empty spaces(0s) in-between.
+        /// </summary>
+        /// <param name="array"> 1D int array </param>
+        /// <returns> True if any movement occured </returns>
         private static bool MoveTiles(int[] array)
         {
-            bool value = false;
-
-            int last0 = array.Length;
+            bool    value = false;
+            int     last0 = array.Length;
 
             for (int i = 1; i < array.Length; i++)
             {
@@ -40,9 +52,18 @@
             }
             return value;
         }
+
+        /// <summary>
+        /// Iterates through all the rows and passes them(int[]) to
+        ///  the manipulation functions (MoveTiles() and MergeTiles())
+        /// </summary>
+        /// <param name="dArr"> Integer array representation of the board </param>
+        /// <param name="reverse"> Reverses the direction, true for up->down and false - the opposite </param>
+        /// <returns> True if anything on board changed </returns>
         public static bool HorizontalManage(int[][] dArr, bool reverse)
         {
             bool value = false;
+
             for (int i = 0; i < dArr.Length; i++)
             {
                 if (reverse)
@@ -57,42 +78,40 @@
             }
             return (value);
         }
+
+        /// <summary>
+        ///  Iterates through each column and creates a temp array, storing the
+        ///   values of the column and then passes them to manipulation functions
+        ///   (MoveTiles() and MergeTiles())
+        /// </summary>
+        /// <param name="dArr"> Integer array representation of the board </param>
+        /// <param name="reverse"> Reverses the direction, true for left to right and false - the opposite </param>
+        /// <returns> True if anything on board changed </returns>
         public static bool VericalManage(int[][] dArr, bool reverse)
         {
-            bool value = false;
+            bool    value = false;
+            int     rows  = dArr.Length;
 
-            int rows = dArr.Length;
-            int cols = dArr[0].Length; // Assuming all rows have the same length
-
-            // Iterate through each column
-            for (int col = 0; col < cols; col++)
+            for (int col = 0; col < dArr[0].Length; col++)
             {
-                // Extract column into a temporary array
-                int[] column = new int[rows];
+                int[] temp_colum = new int[rows];
                 for (int row = 0; row < rows; row++)
-                {
-                    column[row] = dArr[row][col];
-                }
+                    temp_colum[row] = dArr[row][col];
 
-                // Apply operations to the column
                 if (reverse)
-                    ArrayManips.ReverseArray(column);
-                bool step1 = MoveTiles(column);
-                bool step2 = MergeTiles(column);
-                bool step3 = MoveTiles(column);
+                    ArrayManips.ReverseArray(temp_colum);
+                bool step1 = MoveTiles(temp_colum);
+                bool step2 = MergeTiles(temp_colum);
+                bool step3 = MoveTiles(temp_colum);
                 if (step1 || step2 || step3)
                     value = true;
                 if (reverse)
-                    ArrayManips.ReverseArray(column);
+                    ArrayManips.ReverseArray(temp_colum);
 
-                // Update original array with modified column values
                 for (int row = 0; row < rows; row++)
-                {
-                    dArr[row][col] = column[row];
-                }
+                    dArr[row][col] = temp_colum[row];
             }
             return (value);
-
         }
     }
 }

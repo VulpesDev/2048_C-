@@ -23,6 +23,7 @@ namespace _2048
         public void ActionsManage(object sender, KeyEventArgs e)
         {
             bool changed = false;
+
             switch (e.KeyCode)
             {
                 case Keys.Up:
@@ -56,7 +57,10 @@ namespace _2048
             this.DoubleBuffered = true;
             //Disables fullscreen
             this.MaximizeBox = false;
+
             this.KeyDown += ActionsManage;
+            
+            //Initialization
             dArr = GetLabelValuesAsIntArray(tableLayoutPanel1);
             RandomGeneration.GenerateRandomEmptyCell(dArr);
             RandomGeneration.GenerateRandomEmptyCell(dArr);
@@ -70,7 +74,6 @@ namespace _2048
 
         private void Form1_ResizeEnd(object sender, EventArgs e)
         {
-            //UI_Management();
              prevSize = this.Size;
         }
 

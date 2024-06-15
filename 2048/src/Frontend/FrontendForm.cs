@@ -7,20 +7,21 @@ namespace _2048
 {
     public partial class Form1 : Form
     {
-        const int    minWinSize = Constants.MinWinSize;
+        const int       minWinSize = Constants.MinWinSize;
         Size            prevSize   = new Size(0, 0);
 
         public int CountDigits(int number)
         {
             number = Math.Abs(number);
             if (number == 0)
-            {
                 return 1;
-            }
 
             return (int)Math.Floor(Math.Log10(number)) + 1;
         }
 
+        /// <summary>
+        /// Resizes the font of all the tiles so the user can see them at all times
+        /// </summary>
         private void ResizeFontElements()
         {
             for (int row = 0; row < tableLayoutPanel1.RowCount; row++)
@@ -44,6 +45,9 @@ namespace _2048
             }
         }
 
+        /// <summary>
+        /// Keeps the window in a square shape, design decision 
+        /// </summary>
         private void EqualizeWindowSize()
         {
             int newWindowSize = 0;
@@ -67,6 +71,10 @@ namespace _2048
 
         public static readonly Dictionary<int, LabelStyle> numberStyles = Constants.NumberStyles;
 
+        /// <summary>
+        /// Paint's foreground and background at the lables corresponding to
+        ///  the constant dictionary in Constants.cs
+        /// </summary>
         private void PaintColorElements()
         {
             for (int row = 0; row < tableLayoutPanel1.RowCount; row++)

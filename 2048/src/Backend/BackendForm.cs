@@ -41,8 +41,8 @@ namespace _2048
         /// <returns> 2D int array </returns>
         public static int[][] GetLabelValuesAsIntArray(TableLayoutPanel tableLayoutPanel)
         {
-            int rows = tableLayoutPanel.RowCount;
-            int cols = tableLayoutPanel.ColumnCount;
+            int     rows   = tableLayoutPanel.RowCount;
+            int     cols   = tableLayoutPanel.ColumnCount;
             int[][] result = new int[rows][];
 
             for (int row = 0; row < rows; row++)

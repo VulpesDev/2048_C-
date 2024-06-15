@@ -23,7 +23,7 @@ namespace _2048
                 }
             }
         }
-        public static void MoveTiles(int[] array)
+        public void MoveTiles(int[] array)
         {
             int last0 = array.Length;
 
@@ -45,7 +45,7 @@ namespace _2048
                 PrintArray(array);
             }
         }
-        public static void HorizontalManage(int[][] dArr, bool reverse)
+        public void HorizontalManage(int[][] dArr, bool reverse)
         {
             PrintIntArray2D(dArr);
             for (int i = 0; i < dArr.Length; i++)
@@ -62,9 +62,41 @@ namespace _2048
             PrintIntArray2D(dArr);
 
         }
-        public static void VericalManage()
+        public void VericalManage(int[][] dArr, bool reverse)
         {
+            PrintIntArray2D(dArr);
 
+            int rows = dArr.Length;
+            int cols = dArr[0].Length; // Assuming all rows have the same length
+
+            // Iterate through each column
+            for (int col = 0; col < cols; col++)
+            {
+                // Extract column into a temporary array
+                int[] column = new int[rows];
+                for (int row = 0; row < rows; row++)
+                {
+                    column[row] = dArr[row][col];
+                }
+
+                // Apply operations to the column
+                if (reverse)
+                    ReverseArray(column);
+                MoveTiles(column);
+                MergeTiles(column);
+                MoveTiles(column);
+                if (reverse)
+                    ReverseArray(column);
+
+                // Update original array with modified column values
+                for (int row = 0; row < rows; row++)
+                {
+                    dArr[row][col] = column[row];
+                }
+            }
+
+            Console.WriteLine("\nArray after vertical management:");
+            PrintIntArray2D(dArr);
         }
 
         public void ActionsManage(object sender, KeyEventArgs e)
@@ -72,8 +104,10 @@ namespace _2048
             switch (e.KeyCode)
             {
                 case Keys.Up:
+                    VericalManage(dArr, false);
                     break;
                 case Keys.Down:
+                    VericalManage(dArr, true);
                     break;
                 case Keys.Right:
                     HorizontalManage(dArr, true);
@@ -84,12 +118,11 @@ namespace _2048
                 default:
                     break;
             }
-            WriteIntValuesToLabels(dArr, tableLayoutPanel1);
+            GenerateRandomEmptyCell(dArr);
+            DrawImage();
         }
 
-
-
-        public static void PrintArray(int[] array)
+        public void PrintArray( int[] array )
         {
             foreach (var num in array)
             {
@@ -151,7 +184,6 @@ namespace _2048
                     // You can add handling for other types of controls if necessary
                 }
             }
-            UI_Management();
         }
 
 
@@ -192,6 +224,73 @@ namespace _2048
             return result;
         }
 
+        public static int GenerateRandomTileValue()
+        {
+            Random random = new Random();
+            // Define probabilities (e.g., 2 tile with 90%, 4 tile with 10%)
+            int[] probabilities = { 2, 4 }; // Adjust according to your needs
+            int[] weights = { 90, 10 }; // Corresponding weights for probabilities (sum = 100)
+
+            // Calculate total weight
+            int totalWeight = weights.Sum();
+
+            // Generate a random number between 0 and totalWeight
+            int randomNumber = random.Next(0, totalWeight);
+
+            // Determine the tile value based on random number and weights
+            int cumulativeWeight = 0;
+            for (int i = 0; i < probabilities.Length; i++)
+            {
+                cumulativeWeight += weights[i];
+                if (randomNumber < cumulativeWeight)
+                {
+                    return probabilities[i];
+                }
+            }
+
+            // Default return (shouldn't reach here under normal circumstances)
+            return probabilities[0];
+        }
+
+        public static bool IsCellEmpty(int[][] board, int row, int col)
+        {
+            return board[row][col] == 0;
+        }
+
+        public void GenerateRandomEmptyCell(int[][] board)
+        {
+            Random random = new Random();
+            List<Coordinate> emptyCells = new List<Coordinate>();
+
+            // Collect all empty cell coordinates
+            for (int row = 0; row < board.Length; row++)
+            {
+                for (int col = 0; col < board[row].Length; col++)
+                {
+                    Console.WriteLine($"Cell check value: {board[row][col]}");
+                    if (IsCellEmpty(board, row, col))
+                    {
+                        emptyCells.Add(new Coordinate(row, col));
+                        Console.WriteLine("hey!");
+                    }
+                }
+            }
+
+            Console.WriteLine($"Count of empty cells: {emptyCells.Count}");
+            // Randomly select an empty cell
+            if (emptyCells.Count > 0)
+            {
+                int index = random.Next(0, emptyCells.Count);
+                int x = emptyCells[index].Row;
+                int y = emptyCells[index].Column;
+                board[x][y] = GenerateRandomTileValue();
+                return;
+            }
+
+            // No empty cells found (shouldn't happen in 2048 when spawning new tiles)
+            throw new InvalidOperationException("No empty cells available on the board.");
+        }
+
         int[][] dArr;
 
         public Form1()
@@ -203,8 +302,10 @@ namespace _2048
             //Disables fullscreen
             this.MaximizeBox = false;
             this.KeyDown += ActionsManage;
-            UI_Management();
             dArr = GetLabelValuesAsIntArray(tableLayoutPanel1);
+            GenerateRandomEmptyCell(dArr);
+            GenerateRandomEmptyCell(dArr);
+            DrawImage();
             
             //int[] array = new int[] { 0, 2, 2, 4 };
 
@@ -216,6 +317,12 @@ namespace _2048
 
             //Console.WriteLine("\nArray after merging:");
             //PrintArray(array);
+        }
+
+        void DrawImage()
+        {
+            WriteIntValuesToLabels(dArr, tableLayoutPanel1);
+            UI_Management();
         }
         private void Form1_Resize(object sender, EventArgs e)
         {
@@ -230,6 +337,17 @@ namespace _2048
 
         private void Form1_Load(object sender, EventArgs e)
         {
+        }
+    }
+    public class Coordinate
+    {
+        public int Row { get; set; }
+        public int Column { get; set; }
+
+        public Coordinate(int row, int column)
+        {
+            Row = row;
+            Column = column;
         }
     }
 }

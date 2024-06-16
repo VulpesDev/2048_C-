@@ -95,6 +95,7 @@ namespace _2048
             GameState game = new GameState();
             game.Board = dArr;
             game.Score = Score.GetScore();
+            Score.AddHighscore("VulpesDev", game.Score);
             GameManager.SaveGameState(game);
             Form formMenu = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
 

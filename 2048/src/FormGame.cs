@@ -1,5 +1,6 @@
 ﻿using _2048.src;
 using _2048.src.Backend;
+using _2048.src.Backend.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -95,7 +96,8 @@ namespace _2048
             GameState game = new GameState();
             game.Board = dArr;
             game.Score = Score.GetScore();
-            Score.AddHighscore("VulpesDev", game.Score);
+            HighscoreDataAccess.AddHighscore("VulpesDevNew", game.Score);
+
             GameManager.SaveGameState(game);
             Form formMenu = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
 

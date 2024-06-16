@@ -45,7 +45,7 @@
           "dependencies": {
             "BouncyCastle.Cryptography": {
               "target": "Package",
-              "version": "[2.2.1, )"
+              "version": "[2.4.0, )"
             },
             "Google.Protobuf": {
               "target": "Package",
@@ -75,13 +75,25 @@
               "target": "Package",
               "version": "[7.0.20, )"
             },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[7.0.20, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[7.0.20, )"
             },
-            "MySql.Data": {
+            "Microsoft.Extensions.Logging.Console": {
               "target": "Package",
-              "version": "[8.4.0, )"
+              "version": "[6.0.0, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.3.7, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "System.Configuration.ConfigurationManager": {
               "target": "Package",

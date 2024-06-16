@@ -1,4 +1,5 @@
 ﻿using _2048.src.Backend;
+using _2048.src.Backend.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,6 +45,9 @@ namespace _2048.src
             }
         }
 
-
+        private void buttonHScore_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("Hey");
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace _2048.src.Backend.Database
 {
@@ -6,7 +7,9 @@ namespace _2048.src.Backend.Database
     {
         [Key]
         public int Id { get; set; }
+
+        [Column("player_name")]
         public string PlayerName { get; set; }
-        public int Score { get; set; }
+        public uint Score { get; set; }
     }
 }

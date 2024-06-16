@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
+using System.Windows.Forms;
 
 namespace _2048.src.Backend
 {
@@ -33,6 +35,28 @@ namespace _2048.src.Backend
             string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), gameName);
             Directory.CreateDirectory(folderPath);
             return Path.Combine(folderPath, savefileName);
+        }
+        public static void StartGame()
+        {
+            Form formMenu = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();
+
+            if (formMenu != null)
+            {
+                formMenu.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Error occured! Could not find a running application.");
+            }
+            FormGame game = new FormGame();
+            game.Show();
+            formMenu.Visible = false;
+        }
+        public static void DeleteSave()
+        {
+            string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), gameName);
+            string filePath = Path.Combine(folderPath, savefileName);
+            File.Delete(filePath);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using _2048.src.Backend;
+﻿using _2048.src;
+using _2048.src.Backend;
 using System;
 using System.Windows.Forms;
 
@@ -14,12 +15,8 @@ namespace _2048
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form1 form1 = new Form1();
-            Application.Run(form1);
-            GameState game = new GameState();
-            game.Board = Form1.dArr;
-            game.Score = Score.GetScore();
-            GameManager.SaveGameState(game);
+            FormMenu formMenu = new FormMenu();
+            Application.Run(formMenu);
         }
     }
 }

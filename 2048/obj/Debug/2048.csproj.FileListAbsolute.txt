@@ -14,7 +14,6 @@ F:\Project\Game\2048git\2048\bin\Debug\2048.exe
 F:\Project\Game\2048git\2048\bin\Debug\2048.pdb
 F:\Project\Game\2048git\2048\obj\Debug\2048.csproj.AssemblyReference.cache
 F:\Project\Game\2048git\2048\obj\Debug\2048.csproj.SuggestedBindingRedirects.cache
-F:\Project\Game\2048git\2048\obj\Debug\_2048.Form1.resources
 F:\Project\Game\2048git\2048\obj\Debug\_2048.Properties.Resources.resources
 F:\Project\Game\2048git\2048\obj\Debug\2048.csproj.GenerateResource.cache
 F:\Project\Game\2048git\2048\obj\Debug\2048.csproj.CoreCompileInputs.cache
@@ -39,3 +38,6 @@ F:\Project\Game\2048git\2048\bin\Debug\System.Text.Json.xml
 F:\Project\Game\2048git\2048\bin\Debug\System.Threading.Tasks.Extensions.xml
 F:\Project\Game\2048git\2048\bin\Debug\System.ValueTuple.xml
 F:\Project\Game\2048git\2048\obj\Debug\2048.csproj.CopyComplete
+F:\Project\Game\2048git\2048\obj\Debug\_2048.src.FormMenu.resources
+F:\Project\Game\2048git\2048\obj\Debug\_2048.FormGame.resources
+F:\Project\Game\2048git\2048\obj\Debug\_2048.src.NewGameMessageBox.resources

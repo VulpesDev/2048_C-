@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _2048.src.Backend;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace _2048
 {
     public partial class Form1 : Form
     {
-        int[][] dArr;
+        public static int[][] dArr;
 
         public void DrawImage()
         {
@@ -60,11 +61,20 @@ namespace _2048
             this.MaximizeBox = false;
 
             this.KeyDown += ActionsManage;
-            
+
             //Initialization
-            dArr = GetLabelValuesAsIntArray(tableLayoutPanel1);
-            RandomGeneration.GenerateRandomEmptyCell(dArr);
-            RandomGeneration.GenerateRandomEmptyCell(dArr);
+            GameState gameState = GameManager.LoadGameState();
+            if (gameState == null)
+            {
+                dArr = GetLabelValuesAsIntArray(tableLayoutPanel1);
+                RandomGeneration.GenerateRandomEmptyCell(dArr);
+                RandomGeneration.GenerateRandomEmptyCell(dArr);
+            }
+            else
+            {
+                dArr = gameState.Board;
+                Score.SetScore(gameState.Score);
+            }
             DrawImage();
         }
 

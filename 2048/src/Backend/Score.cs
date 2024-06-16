@@ -10,7 +10,7 @@ namespace _2048.src.Backend
     {
         private static uint score = 0;
 
-        public static long GetScore()
+        public static uint GetScore()
         {
             return score;
         }

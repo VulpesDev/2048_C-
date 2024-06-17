@@ -33,7 +33,6 @@ namespace _2048
             {
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string projectRootDirectory = System.IO.Path.GetFullPath(System.IO.Path.Combine(baseDirectory, @"..\.."));
-                Console.WriteLine($"Project root directory: {Path.Combine(projectRootDirectory, ".env")}");
 
                 DotEnv.Fluent()
                     .WithExceptions()
@@ -42,7 +41,6 @@ namespace _2048
                 string connection_string = DotEnv.Fluent()
                     .WithEnvFiles(Path.Combine(projectRootDirectory, ".env"))
                     .Read()["2048_CON_SECRET_VULPESDEV"];
-                Console.WriteLine($"My secret value is: {connection_string}");
                 if (Context == null)
                 {
                     var optionsBuilder = new DbContextOptionsBuilder<HighscoreDataContext>();

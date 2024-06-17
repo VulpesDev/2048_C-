@@ -78,5 +78,10 @@ namespace _2048
         {
 
         }
+
+        private void FormGame_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

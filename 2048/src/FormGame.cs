@@ -10,6 +10,7 @@ namespace _2048
     public partial class FormGame : Form
     {
         public static int[][] dArr;
+        public static string username;
 
         public void DrawImage()
         {
@@ -59,6 +60,7 @@ namespace _2048
             this.KeyDown += ActionsManage;
 
             //Initialization
+            
             GameState gameState = GameManager.LoadGameState();
             if (gameState == null)
             {
@@ -90,7 +92,7 @@ namespace _2048
             GameState game = new GameState();
             game.Board = dArr;
             game.Score = Score.GetScore();
-            HighscoreDataAccess.AddHighscore("VulpesDevNew", game.Score);
+            HighscoreDataAccess.AddHighscore(FormMenu.username, game.Score);
 
             GameManager.SaveGameState(game);
             Form formMenu = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();

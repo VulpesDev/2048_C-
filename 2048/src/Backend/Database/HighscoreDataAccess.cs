@@ -29,5 +29,13 @@ namespace _2048.src.Backend.Database
                 .ToList();
 
         }
+
+        public static List<Highscore> lastTenScores()
+        {
+            return context.Highscores
+                .OrderByDescending(h => h.Timestamp)
+                .Take(10)
+                .ToList();
+        }
     }
 }

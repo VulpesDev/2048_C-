@@ -18,16 +18,14 @@ namespace _2048.src
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public void LoadData()
         {
-
+                List<Highscore> data = HighscoreDataAccess.lastTenScores();
+                InsertDataInTable(data);
         }
 
-        private void WorldLeaderboardMenu_Load(object sender, EventArgs e)
+        private void InsertDataInTable(List<Highscore> data)
         {
-            //load database
-            List<Highscore> data = HighscoreDataAccess.topTenScores();
-
             int rows = tableLayoutPanel1.RowCount;
             int cols = tableLayoutPanel1.ColumnCount;
 
@@ -36,12 +34,12 @@ namespace _2048.src
                 for (int col = 1; col < cols; col++)
                 {
                     Control control = tableLayoutPanel1.GetControlFromPosition(col, row);
-                    if (control is Label label && row-1 < data.Count())
+                    if (control is Label label && row - 1 < data.Count())
                     {
                         if (col == 1)
-                            label.Text = data[row-1].PlayerName;
+                            label.Text = data[row - 1].PlayerName;
                         else if (col == 2)
-                            label.Text = data[row-1].Score.ToString();
+                            label.Text = data[row - 1].Score.ToString();
                     }
                     else
                     {

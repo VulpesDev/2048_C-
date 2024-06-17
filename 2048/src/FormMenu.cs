@@ -14,6 +14,7 @@ namespace _2048.src
 {
     public partial class FormMenu : Form
     {
+        public static string username;
         public FormMenu()
         {
             InitializeComponent();
@@ -22,14 +23,15 @@ namespace _2048.src
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (GameManager.LoadGameState() != null)
+
+            NewGameMessageBox newGameMessageBox = new NewGameMessageBox();
+            newGameMessageBox.ShowDialog();
+
+            username = textBox1.Text;
+            if (username == null || username == "" || username == " ")
             {
-                NewGameMessageBox newGameMessageBox = new NewGameMessageBox();
-                newGameMessageBox.ShowDialog();
-            }
-            else
-            {
-                GameManager.StartGame();
+                username = "Anonymous";
+                Console.WriteLine("here!");
             }
         }
 
@@ -54,7 +56,28 @@ namespace _2048.src
 
         private void buttonWHScore_Click(object sender, EventArgs e)
         {
-            panelWorldLeaderboard.Visible = true;
+            panelWorldLeaderboard.Show();
+            worldLeaderboardMenu1.LoadData();
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            panelWorldLeaderboard.Visible = false;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+            if (!allowedChars.Contains(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

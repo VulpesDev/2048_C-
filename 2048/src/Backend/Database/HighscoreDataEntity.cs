@@ -11,5 +11,8 @@ namespace _2048.src.Backend.Database
         [Column("player_name")]
         public string PlayerName { get; set; }
         public uint Score { get; set; }
+
+        [Timestamp]
+        public byte[] Timestamp { get; set; }
     }
 }

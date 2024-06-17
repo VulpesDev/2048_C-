@@ -96,6 +96,7 @@ F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\2048.pdb
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\Azure.Core.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\Azure.Identity.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\BouncyCastle.Cryptography.dll
+F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\dotenv.net.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\Google.Protobuf.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\K4os.Compression.LZ4.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\K4os.Compression.LZ4.Streams.dll
@@ -167,6 +168,7 @@ F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.Properties.Resourc
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.FormGame.resources
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.src.FormMenu.resources
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.src.NewGameMessageBox.resources
+F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.src.WorldLeaderboardMenu.resources
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\2048.csproj.GenerateResource.cache
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\2048.GeneratedMSBuildEditorConfig.editorconfig
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\2048.csproj.CoreCompileInputs.cache
@@ -176,5 +178,3 @@ F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\refint\2048.dll
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\2048.pdb
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\2048.genruntimeconfig.cache
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\ref\2048.dll
-F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\dotenv.net.dll
-F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.src.WorldLeaderboardMenu.resources

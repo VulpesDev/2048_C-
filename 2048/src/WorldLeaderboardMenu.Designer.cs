@@ -585,7 +585,7 @@
             this.headerID.Name = "headerID";
             this.headerID.Size = new System.Drawing.Size(78, 33);
             this.headerID.TabIndex = 0;
-            this.headerID.Text = "Id";
+            this.headerID.Text = "Place";
             this.headerID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // WorldLeaderboardMenu
@@ -595,7 +595,6 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "WorldLeaderboardMenu";
             this.Size = new System.Drawing.Size(477, 403);
-            this.Load += new System.EventHandler(this.WorldLeaderboardMenu_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

@@ -9,7 +9,7 @@ namespace _2048
         public const int MinWinSize = 545;
 
         // Font size calculations
-        public const float BaseFontSizeMultiplier = 0.06f;
+        public const float BaseFontSizeMultiplier = 0.44f;
         public const float DigitSizeReductionFactor = 0.55f;
 
         // Colors and fonts for different numbers

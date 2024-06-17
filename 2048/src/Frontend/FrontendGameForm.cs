@@ -24,6 +24,7 @@ namespace _2048
         /// </summary>
         private void ResizeFontElements()
         {
+            Console.WriteLine($"window width: {Size.Width}");
             for (int row = 0; row < tableLayoutPanel1.RowCount; row++)
             {
                 for (int col = 0; col < tableLayoutPanel1.ColumnCount; col++)
@@ -31,7 +32,7 @@ namespace _2048
                     Control control = tableLayoutPanel1.GetControlFromPosition(col, row);
                     if (control != null && control is Label label)
                     {
-                        float newFontSize = this.Size.Width * Constants.BaseFontSizeMultiplier;
+                        float newFontSize = control.Size.Width * Constants.BaseFontSizeMultiplier;
                         if (int.TryParse(label.Text, out int num))
                         {
                             int digitCount = CountDigits(num);

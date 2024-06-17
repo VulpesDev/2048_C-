@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "UqQ9CBeR3SYrIf5MqXw4wtdba95dqzTkeKPOf+Fb6/U6Zm7kLBmTZRIntFa0MsoKOMWGC23VF+MY4pG8KOwItQ==",
+  "dgSpecHash": "IVAOuRDtYGW5x51ErpyfM+dADKp0IuLl2b5UU2eq70+/9/b8EzFQ1o3zurg/hxyyh6pkWgqqusqvTccJQwkBgg==",
   "success": true,
-  "projectFilePath": "F:\\Project\\Game\\2048git\\2048\\2048.csproj",
+  "projectFilePath": "F:\\Project\\Game\\2048reset\\2048\\2048.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tsvet\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\tsvet\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\tsvet\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
+    "C:\\Users\\tsvet\\.nuget\\packages\\dotenv.net\\3.1.3\\dotenv.net.3.1.3.nupkg.sha512",
     "C:\\Users\\tsvet\\.nuget\\packages\\google.protobuf\\3.25.1\\google.protobuf.3.25.1.nupkg.sha512",
     "C:\\Users\\tsvet\\.nuget\\packages\\k4os.compression.lz4\\1.3.5\\k4os.compression.lz4.1.3.5.nupkg.sha512",
     "C:\\Users\\tsvet\\.nuget\\packages\\k4os.compression.lz4.streams\\1.3.5\\k4os.compression.lz4.streams.1.3.5.nupkg.sha512",

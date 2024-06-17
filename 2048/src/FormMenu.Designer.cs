@@ -31,6 +31,10 @@
             this.buttonPlay = new System.Windows.Forms.Button();
             this.buttonHScore = new System.Windows.Forms.Button();
             this.buttonWHScore = new System.Windows.Forms.Button();
+            this.mySqlCommandBuilder1 = new MySqlConnector.MySqlCommandBuilder();
+            this.panelWorldLeaderboard = new System.Windows.Forms.Panel();
+            this.worldLeaderboardMenu1 = new _2048.src.WorldLeaderboardMenu();
+            this.panelWorldLeaderboard.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonPlay
@@ -70,6 +74,34 @@
             this.buttonWHScore.TabIndex = 2;
             this.buttonWHScore.Text = "World Leaderboard";
             this.buttonWHScore.UseVisualStyleBackColor = true;
+            this.buttonWHScore.Click += new System.EventHandler(this.buttonWHScore_Click);
+            // 
+            // mySqlCommandBuilder1
+            // 
+            this.mySqlCommandBuilder1.DataAdapter = null;
+            this.mySqlCommandBuilder1.QuotePrefix = "`";
+            this.mySqlCommandBuilder1.QuoteSuffix = "`";
+            // 
+            // panelWorldLeaderboard
+            // 
+            this.panelWorldLeaderboard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelWorldLeaderboard.AutoSize = true;
+            this.panelWorldLeaderboard.Controls.Add(this.worldLeaderboardMenu1);
+            this.panelWorldLeaderboard.Enabled = false;
+            this.panelWorldLeaderboard.Location = new System.Drawing.Point(572, 520);
+            this.panelWorldLeaderboard.Name = "panelWorldLeaderboard";
+            this.panelWorldLeaderboard.Size = new System.Drawing.Size(685, 649);
+            this.panelWorldLeaderboard.TabIndex = 3;
+            this.panelWorldLeaderboard.Visible = false;
+            // 
+            // worldLeaderboardMenu1
+            // 
+            this.worldLeaderboardMenu1.Location = new System.Drawing.Point(103, 81);
+            this.worldLeaderboardMenu1.Name = "worldLeaderboardMenu1";
+            this.worldLeaderboardMenu1.Size = new System.Drawing.Size(477, 403);
+            this.worldLeaderboardMenu1.TabIndex = 0;
             // 
             // FormMenu
             // 
@@ -77,6 +109,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(194)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(681, 647);
+            this.Controls.Add(this.panelWorldLeaderboard);
             this.Controls.Add(this.buttonWHScore);
             this.Controls.Add(this.buttonHScore);
             this.Controls.Add(this.buttonPlay);
@@ -86,6 +119,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMenu";
             this.Load += new System.EventHandler(this.FormMenu_Load);
+            this.panelWorldLeaderboard.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,5 +130,8 @@
         private System.Windows.Forms.Button buttonPlay;
         private System.Windows.Forms.Button buttonHScore;
         private System.Windows.Forms.Button buttonWHScore;
+        private MySqlConnector.MySqlCommandBuilder mySqlCommandBuilder1;
+        private System.Windows.Forms.Panel panelWorldLeaderboard;
+        private WorldLeaderboardMenu worldLeaderboardMenu1;
     }
 }

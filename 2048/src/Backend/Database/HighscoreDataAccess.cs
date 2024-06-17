@@ -8,9 +8,10 @@ namespace _2048.src.Backend.Database
 {
     internal class HighscoreDataAccess
     {
+        static HighscoreDataContext context = Program.Context;
+
         public static void AddHighscore(string name, uint scoreVal)
         {
-               HighscoreDataContext context = Program.Context;
                Highscore newHighscore = new()
                {
                    PlayerName = name,
@@ -18,6 +19,15 @@ namespace _2048.src.Backend.Database
                };
                context.Highscores.Add(newHighscore);
                context.SaveChanges();
+        }
+
+        public static List<Highscore> topTenScores()
+        {
+            return context.Highscores
+                .OrderByDescending(h => h.Score)
+                .Take(10)
+                .ToList();
+
         }
     }
 }

@@ -35,6 +35,8 @@ namespace _2048.src
 
         private void FormMenu_Load(object sender, EventArgs e)
         {
+            panelWorldLeaderboard.Location = new Point(0, 0);
+            panelWorldLeaderboard.Visible = false;
         }
 
         private void FormMenu_Shown(object sender, EventArgs e)
@@ -48,6 +50,11 @@ namespace _2048.src
         private void buttonHScore_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Hey");
+        }
+
+        private void buttonWHScore_Click(object sender, EventArgs e)
+        {
+            panelWorldLeaderboard.Visible = true;
         }
     }
 }

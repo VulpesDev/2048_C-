@@ -24,7 +24,6 @@ namespace _2048
         /// </summary>
         private void ResizeFontElements()
         {
-            Console.WriteLine($"window width: {Size.Width}");
             for (int row = 0; row < tableLayoutPanel1.RowCount; row++)
             {
                 for (int col = 0; col < tableLayoutPanel1.ColumnCount; col++)

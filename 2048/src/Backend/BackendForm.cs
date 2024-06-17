@@ -69,9 +69,14 @@ namespace _2048
             return result;
         }
 
-        private void WriteScoreValue(Label scoreLabel)
+        public void WriteScoreValue(Label scoreLabel)
         {
             scoreLabel.Text = Score.GetScore().ToString();
+        }
+
+        private void FormGame_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

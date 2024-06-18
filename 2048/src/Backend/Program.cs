@@ -11,7 +11,6 @@ namespace _2048
 {
     internal static class Program
     {
-        public static HighscoreDataContext Context { get; private set; }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -21,33 +20,11 @@ namespace _2048
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            InitializeContext();
+            //InitializeContext();
 
             FormMenu formMenu = new FormMenu();
             Application.Run(formMenu);
         }
 
-        private static void InitializeContext()
-        {
-            if (Context == null)
-            {
-                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string projectRootDirectory = System.IO.Path.GetFullPath(System.IO.Path.Combine(baseDirectory, @"..\.."));
-
-                DotEnv.Fluent()
-                    .WithExceptions()
-                    .WithEnvFiles(Path.Combine(projectRootDirectory, ".env"))
-                    .Load();
-                string connection_string = DotEnv.Fluent()
-                    .WithEnvFiles(Path.Combine(projectRootDirectory, ".env"))
-                    .Read()["2048_CON_SECRET_VULPESDEV"];
-                if (Context == null)
-                {
-                    var optionsBuilder = new DbContextOptionsBuilder<HighscoreDataContext>();
-                    optionsBuilder.UseMySql(connection_string, new MySqlServerVersion(new Version(8, 0, 28)));
-                    Context = new HighscoreDataContext(optionsBuilder.Options);
-                }
-            }
-        }
     }
 }

@@ -18,9 +18,10 @@ namespace _2048.src
             InitializeComponent();
         }
 
-        public void LoadData()
+        public async void LoadData()
         {
-                List<Highscore> data = HighscoreDataAccess.lastTenScores();
+                API_connect connect = new();
+                List<Highscore> data = await connect.GetLastTenScores();
                 InsertDataInTable(data);
         }
 

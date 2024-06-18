@@ -92,7 +92,7 @@ namespace _2048
             GameState game = new GameState();
             game.Board = dArr;
             game.Score = Score.GetScore();
-            HighscoreDataAccess.AddHighscore(FormMenu.username, game.Score);
+            //HighscoreDataAccess.AddHighscore(FormMenu.username, game.Score);
 
             GameManager.SaveGameState(game);
             Form formMenu = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();

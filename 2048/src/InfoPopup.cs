@@ -5,6 +5,15 @@ namespace _2048
 {
     public partial class InfoPopup : Form
     {
+        public InfoPopup(string title, string description)
+        {
+            InitializeComponent();
+            this.Text = title;
+            _title.Text = title;
+            _body.Text = description;
+            _buttonAction.Text = "OK";
+            this.Show();
+        }
         public InfoPopup(string title, string description, string actionText)
         {
             InitializeComponent();
@@ -12,6 +21,7 @@ namespace _2048
             _title.Text = title;
             _body.Text = description;
             _buttonAction.Text = actionText;
+            this.Show();
         }
 
         private void _buttonAction_Click(object sender, EventArgs e)

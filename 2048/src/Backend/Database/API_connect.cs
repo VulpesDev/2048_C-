@@ -1,35 +1,46 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace _2048.src.Backend.Database
 {
+    /// <summary>
+    /// This class is used for all the communication with the API,
+    /// which in turn communicates with the mySQL database hosted on infinityfree
+    /// apiUrl must be the url specified in the HighscoreDataAccess.cs
+    /// Here I am also using the InfoPopup.cs form for detailed info
+    /// of API actions(on success or general info)
+    /// and, if any, errors that occur in the API.
+    /// </summary>
     internal class API_connect
     {
+        /// <summary> region GetMethodCalls
+        /// This region contains get request
+        /// </summary>
+        /// <returns>Most of them (all of them for now) List of Highscores (simple class / more like a struct)</returns>
+
+        #region GetMethodCalls
         public async Task<List<Highscore>> GetLastTenScores()
         {
-            HttpClient client = new();
-            string apiUrl = "https://localhost:4242/api/HighscoreData/lastten";
+            List<Highscore> lastScores = null;
+            HttpClient      client     = new();
+            string          apiUrl     = "https://localhost:4242/api/HighscoreData/lastten";
+
             try
             {
                 var response = await client.GetAsync(apiUrl);
-
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonString = await response.Content.ReadAsStringAsync();
-                    List<Highscore> lastScores = JsonConvert.DeserializeObject<List<Highscore>>(jsonString);
-                    return lastScores;
+                    lastScores = JsonConvert.DeserializeObject<List<Highscore>>(jsonString);
                 }
                 else
                 {
                     InfoPopup popup = new(
                         "API error",
-                        "Failed to retrieve last ten scores: " + response.StatusCode,
-                        "OK"
+                        "Failed to retrieve last ten scores: " + response.StatusCode
                         );
                     popup.Show();
                 }
@@ -38,28 +49,25 @@ namespace _2048.src.Backend.Database
             {
                 InfoPopup popup = new(
                         "API error",
-                        "Unknown error occured! exception: " + ex.Message,
-                        "OK"
+                        "Unknown error occured! exception: " + ex.Message
                         );
-                popup.Show();
             }
-            return null;
+            return lastScores;
         }
 
         public async Task<List<Highscore>> GetTopTenScores()
         {
-            HttpClient client = new();
-            string apiUrl = "https://localhost:4242/api/HighscoreData/topten";
+            List<Highscore> topScores = null;
+            HttpClient      client    = new();
+            string          apiUrl    = "https://localhost:4242/api/HighscoreData/topten";
 
             try
             {
                 var response = await client.GetAsync(apiUrl);
-
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonString = await response.Content.ReadAsStringAsync();
-                    List<Highscore> topScores = JsonConvert.DeserializeObject<List<Highscore>>(jsonString);
-                    return topScores;
+                     topScores = JsonConvert.DeserializeObject<List<Highscore>>(jsonString);
                 }
                 else
                 {
@@ -68,40 +76,42 @@ namespace _2048.src.Backend.Database
                             "Failed to retrieve top ten scores: " + response.StatusCode,
                             "OK"
                             );
-                    popup.Show();
                 }
             }
             catch (Exception ex)
             {
                 InfoPopup popup = new(
                         "API error",
-                        "Unknown error occured! exception: " + ex.Message,
-                        "OK"
+                        "Unknown error occured! exception: " + ex.Message
                         );
-                popup.Show();
             }
-            return null;
+            return topScores;
         }
+        #endregion
 
+        /// <summary> region PostMethodCalls
+        /// This region contains post requests
+        /// </summary>
+        /// <returns>nothing</returns>
+        #region PostMethodCalls
         public static async Task AddHighscore(string player_name, string scoreStr)
         {
-                HttpClient client = new();
-                string apiUrl = "https://localhost:4242/api/HighscoreData/add";
-                var data = new { PlayerName = player_name, ScoreStr = scoreStr };
-                var json = JsonConvert.SerializeObject(data);
-                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+            HttpClient  client  = new();
+            string      apiUrl  = "https://localhost:4242/api/HighscoreData/add";
+
+            var         data    = new { PlayerName = player_name, ScoreStr = scoreStr };
+            var         json    = JsonConvert.SerializeObject(data);
+            var         content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+            
             try
             {
                 var response = await client.PostAsync(apiUrl, content);
-
                 if (response.IsSuccessStatusCode)
                 {
                     InfoPopup popup = new(
                         "API Success",
-                        $"Your score has been submitted!\r\n User: {player_name}\r\nScore: {scoreStr}",
-                        "OK"
+                        $"Your score has been submitted!\r\n User: {player_name}\r\nScore: {scoreStr}"
                         );
-                    popup.Show();
                 }
                 else
                 {
@@ -110,21 +120,18 @@ namespace _2048.src.Backend.Database
                         "API error",
                         $"Failed to add highscore." +
                         $"\r\nStatus code: {response.StatusCode}" +
-                        $"\r\nResponse content: {responseContent}",
-                        "OK"
+                        $"\r\nResponse content: {responseContent}"
                         );
-                    popup.Show();
                 }
             }
             catch (Exception ex)
             {
                 InfoPopup popup = new(
                         "API error",
-                        "Unknown error occured! exception: " + ex.Message,
-                        "OK"
+                        "Unknown error occured! exception: " + ex.Message
                         );
-                popup.Show();
             }
         }
+        #region
     }
 }

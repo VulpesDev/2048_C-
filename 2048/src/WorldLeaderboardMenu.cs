@@ -21,7 +21,6 @@ namespace _2048.src
         public async void LoadData()
         {
             API_connect connect = new();
-            //List<Highscore> data = await connect.GetLastTenScores();
             List<Highscore> data = await connect.GetTopTenScores();
             InsertDataInTable(data);
         }

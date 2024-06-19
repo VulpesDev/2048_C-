@@ -6,11 +6,19 @@ using System.Windows.Forms;
 
 namespace _2048.src.Backend
 {
+    /// <summary>
+    /// This is the game state simple class(struct-like)
+    /// data, it's going to be serialized and saved in a file
+    /// for later de-serialization for it to be loaded
+    /// </summary>
     public class GameState
     {
         public int[][] Board { get; set; }
         public uint Score { get; set; }
     }
+    /// <summary>
+    /// Manages the game information (when to start or stop the game or game information(save files))
+    /// </summary>
     public class GameManager
     {
         private const string gameName = "2048_VulpesDev";
@@ -30,6 +38,7 @@ namespace _2048.src.Backend
             GameState gameState = JsonSerializer.Deserialize<GameState>(jsonString);
             return gameState;
         }
+        //The save file is saved in appdata in a folder named after the game
         public static string GetSaveFilePath()
         {
             string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), gameName);
@@ -46,7 +55,11 @@ namespace _2048.src.Backend
             }
             else
             {
-                MessageBox.Show("Error occured! Could not find a running application.");
+                InfoPopup popup = new(
+                    "Game Manager",
+                    "Error occured! Could not find a running application."
+                    );
+                return;
             }
             FormGame game = new FormGame();
             game.Show();

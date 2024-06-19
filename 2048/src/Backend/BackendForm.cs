@@ -73,15 +73,5 @@ namespace _2048
         {
             scoreLabel.Text = Score.GetScore().ToString();
         }
-
-        private void FormGame_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormGame_Load_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

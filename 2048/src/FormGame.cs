@@ -92,7 +92,6 @@ namespace _2048
             GameState game = new GameState();
             game.Board = dArr;
             game.Score = Score.GetScore();
-            //HighscoreDataAccess.AddHighscore(FormMenu.username, game.Score);
             Highscore newHighscore = new();
             newHighscore.PlayerName = FormMenu.username;
             newHighscore.Score = game.Score;

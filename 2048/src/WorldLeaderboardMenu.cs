@@ -20,7 +20,7 @@ namespace _2048.src
 
         public async void LoadData()
         {
-                API_connect connect = new();
+            API_connect connect = new();
             //List<Highscore> data = await connect.GetLastTenScores();
             List<Highscore> data = await connect.GetTopTenScores();
             InsertDataInTable(data);
@@ -28,6 +28,8 @@ namespace _2048.src
 
         private void InsertDataInTable(List<Highscore> data)
         {
+            if (data == null)
+                return;
             int rows = tableLayoutPanel1.RowCount;
             int cols = tableLayoutPanel1.ColumnCount;
 

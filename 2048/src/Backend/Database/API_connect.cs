@@ -13,7 +13,7 @@ namespace _2048.src.Backend.Database
         public async Task<List<Highscore>> GetLastTenScores()
         {
             HttpClient client = new();
-                string apiUrl = "https://localhost:4242/api/HighscoreData/lastten";
+                string apiUrl = "https://localhost:4242/api/HighscoreData/lastte";
 
                 var response = await client.GetAsync(apiUrl);
 
@@ -25,7 +25,12 @@ namespace _2048.src.Backend.Database
                 }
                 else
                 {
-                    Console.WriteLine("Failed to retrieve last ten scores: " + response.StatusCode);
+                    InfoPopup popup = new(
+                        "API error",
+                        "Failed to retrieve last ten scores: " + response.StatusCode,
+                        "OK"
+                        );
+                    popup.Show();
                     return null;
                 }
         }
@@ -33,7 +38,7 @@ namespace _2048.src.Backend.Database
         public async Task<List<Highscore>> GetTopTenScores()
         {
             HttpClient client = new();
-            string apiUrl = "https://localhost:4242/api/HighscoreData/topten";
+            string apiUrl = "https://localhost:4242/api/HighscoreData/topte";
 
             var response = await client.GetAsync(apiUrl);
 
@@ -45,7 +50,12 @@ namespace _2048.src.Backend.Database
             }
             else
             {
-                Console.WriteLine("Failed to retrieve top ten scores: " + response.StatusCode);
+                InfoPopup popup = new(
+                        "API error",
+                        "Failed to retrieve top ten scores: " + response.StatusCode,
+                        "OK"
+                        );
+                popup.Show();
                 return null;
             }
         }
@@ -56,7 +66,7 @@ namespace _2048.src.Backend.Database
             {
                 HttpClient client = new();
 
-                string apiUrl = "https://localhost:4242/api/HighscoreData/add";
+                string apiUrl = "https://localhost:4242/api/HighscoreData/ad";
 
                 var data = new { PlayerName = player_name, ScoreStr = scoreStr };
 
@@ -72,15 +82,24 @@ namespace _2048.src.Backend.Database
                 }
                 else
                 {
-                    Console.WriteLine($"Failed to add highscore. Status code: {response.StatusCode}");
-
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"Response content: {responseContent}");
+                    InfoPopup popup = new(
+                        "API error",
+                        $"Failed to add highscore. Status code: {response.StatusCode}" +
+                        $"\nResponse content: {responseContent}",
+                        "OK"
+                        );
+                    popup.Show();
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                InfoPopup popup = new(
+                        "API error",
+                        "Unknown error occured! exception: " + ex.Message,
+                        "OK"
+                        );
+                popup.Show();
             }
         }
     }

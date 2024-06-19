@@ -50,7 +50,7 @@ namespace _2048.src
 
         private void buttonHScore_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Hey");
+            //Console.WriteLine("Hey");
         }
 
         private void buttonWHScore_Click(object sender, EventArgs e)

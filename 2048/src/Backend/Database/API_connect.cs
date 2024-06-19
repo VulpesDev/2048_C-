@@ -49,7 +49,7 @@ namespace _2048.src.Backend.Database
             {
                 InfoPopup popup = new(
                         "API error",
-                        "Unknown error occured! exception: " + ex.Message
+                        "Unknown error: " + ex.Message
                         );
             }
             return lastScores;
@@ -82,7 +82,7 @@ namespace _2048.src.Backend.Database
             {
                 InfoPopup popup = new(
                         "API error",
-                        "Unknown error occured! exception: " + ex.Message
+                        "Unknown error: " + ex.Message
                         );
             }
             return topScores;
@@ -128,10 +128,10 @@ namespace _2048.src.Backend.Database
             {
                 InfoPopup popup = new(
                         "API error",
-                        "Unknown error occured! exception: " + ex.Message
+                        "Unknown error: " + ex.Message
                         );
             }
         }
-        #region
+        #endregion
     }
 }

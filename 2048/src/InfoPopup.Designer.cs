@@ -33,6 +33,7 @@
             this.panelAction = new System.Windows.Forms.Panel();
             this._buttonAction = new System.Windows.Forms.Button();
             this.panelDescription = new System.Windows.Forms.Panel();
+            this._body = new System.Windows.Forms.TextBox();
             this._description = new System.Windows.Forms.Label();
             this.panelTitle.SuspendLayout();
             this.panelAction.SuspendLayout();
@@ -53,11 +54,11 @@
             // 
             this._title.AutoSize = true;
             this._title.BackColor = System.Drawing.Color.Transparent;
-            this._title.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this._title.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this._title.Location = new System.Drawing.Point(24, 27);
             this._title.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._title.Name = "_title";
-            this._title.Size = new System.Drawing.Size(47, 18);
+            this._title.Size = new System.Drawing.Size(72, 25);
             this._title.TabIndex = 3;
             this._title.Text = "TITLE";
             // 
@@ -73,6 +74,7 @@
             // 
             // _buttonAction
             // 
+            this._buttonAction.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this._buttonAction.Location = new System.Drawing.Point(447, 18);
             this._buttonAction.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this._buttonAction.Name = "_buttonAction";
@@ -85,6 +87,7 @@
             // panelDescription
             // 
             this.panelDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(194)))), ((int)(((byte)(185)))));
+            this.panelDescription.Controls.Add(this._body);
             this.panelDescription.Controls.Add(this._description);
             this.panelDescription.Location = new System.Drawing.Point(-1, 85);
             this.panelDescription.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -92,15 +95,32 @@
             this.panelDescription.Size = new System.Drawing.Size(584, 90);
             this.panelDescription.TabIndex = 5;
             // 
+            // _body
+            // 
+            this._body.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(194)))), ((int)(((byte)(185)))));
+            this._body.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._body.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._body.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this._body.Location = new System.Drawing.Point(0, 0);
+            this._body.Multiline = true;
+            this._body.Name = "_body";
+            this._body.ReadOnly = true;
+            this._body.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this._body.ShortcutsEnabled = false;
+            this._body.Size = new System.Drawing.Size(584, 90);
+            this._body.TabIndex = 3;
+            this._body.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._body.Enter += new System.EventHandler(this._body_Enter);
+            this._body.KeyDown += new System.Windows.Forms.KeyEventHandler(this._body_KeyDown);
+            // 
             // _description
             // 
-            this._description.AutoSize = true;
             this._description.BackColor = System.Drawing.Color.Transparent;
             this._description.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this._description.Location = new System.Drawing.Point(239, 32);
+            this._description.Location = new System.Drawing.Point(0, 0);
             this._description.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._description.Name = "_description";
-            this._description.Size = new System.Drawing.Size(109, 18);
+            this._description.Size = new System.Drawing.Size(584, 90);
             this._description.TabIndex = 2;
             this._description.Text = "DESCRIPTION";
             this._description.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -139,5 +159,6 @@
         private System.Windows.Forms.Label _title;
         private System.Windows.Forms.Label _description;
         private System.Windows.Forms.Button _buttonAction;
+        private System.Windows.Forms.TextBox _body;
     }
 }

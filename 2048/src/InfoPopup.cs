@@ -10,10 +10,7 @@ namespace _2048
             InitializeComponent();
             this.Text = title;
             _title.Text = title;
-            _description.Text = description;
-            int newx = (panelDescription.ClientSize.Width - _description.Width) / 2;
-            int newy = (panelDescription.ClientSize.Height - _description.Height) / 2;
-            _description.Location = new System.Drawing.Point(newx, newy);
+            _body.Text = description;
             _buttonAction.Text = actionText;
         }
 
@@ -21,5 +18,16 @@ namespace _2048
         {
             this.Close();
         }
+        private void _body_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Shift && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+                e.Handled = true;
+        }
+        private void _body_Enter(object sender, EventArgs e)
+        {
+            ((TextBox)sender).SelectionLength = 0;
+            ((TextBox)sender).SelectionStart = ((TextBox)sender).Text.Length;
+        }
+
     }
 }

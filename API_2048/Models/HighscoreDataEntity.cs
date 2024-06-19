@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API_2048.Models
@@ -13,6 +14,7 @@ namespace API_2048.Models
         public uint Score { get; set; }
 
         [Timestamp]
+        [BindNever]
         public byte[] Timestamp { get; set; }
     }
 }

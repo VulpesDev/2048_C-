@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using API_2048.Models;
 
 namespace API_2048.Controllers
 {
@@ -19,12 +21,22 @@ namespace API_2048.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult AddHighscore(string name, uint scoreVal)
+        public IActionResult AddHighscore(HighscoreInputModel model)
         {
+            Console.WriteLine($"Received request: PlayerName={model.PlayerName}, ScoreStr={model.ScoreStr}");
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (uint.TryParse(model.ScoreStr, out uint score) == false)
+            {
+                score = 0;
+            }
                Highscore newHighscore = new()
                {
-                   PlayerName = name,
-                   Score = scoreVal
+                   PlayerName = model.PlayerName,
+                   Score = score
                };
             _context.Highscores.Add(newHighscore);
             _context.SaveChanges();

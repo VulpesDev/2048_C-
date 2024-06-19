@@ -31,7 +31,6 @@ namespace _2048.src
             if (username == null || username == "" || username == " ")
             {
                 username = "Anonymous";
-                Console.WriteLine("here!");
             }
         }
 

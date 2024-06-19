@@ -93,6 +93,10 @@ namespace _2048
             game.Board = dArr;
             game.Score = Score.GetScore();
             //HighscoreDataAccess.AddHighscore(FormMenu.username, game.Score);
+            Highscore newHighscore = new();
+            newHighscore.PlayerName = FormMenu.username;
+            newHighscore.Score = game.Score;
+            API_connect.AddHighscore(FormMenu.username, game.Score.ToString());
 
             GameManager.SaveGameState(game);
             Form formMenu = Application.OpenForms.OfType<FormMenu>().FirstOrDefault();

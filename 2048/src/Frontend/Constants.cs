@@ -28,6 +28,7 @@ namespace _2048
         public static readonly Color ColorBackground10 = Color.FromArgb(237, 200, 80);
         public static readonly Color ColorBackground11 = Color.FromArgb(237, 197, 63);
         public static readonly Color ColorBackground12 = Color.FromArgb(237, 194, 46);
+        public static readonly Color ColorFlick = Color.FromArgb(255, 198, 133, 123);
 
         // Fonts
         public static readonly Font FontLargeBold = new Font("Arial", 55, FontStyle.Bold);

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace _2048.src
@@ -84,6 +85,8 @@ namespace _2048.src
         /// Handle input for the game and
         /// generate new values if the board has changed
         /// </summary>
+
+        bool animating;
         public void ActionsManage(object sender, KeyEventArgs e)
         {
             bool changed = false;
@@ -111,6 +114,23 @@ namespace _2048.src
             }
             if (changed)
                 RandomGeneration.GenerateRandomEmptyCell(dArr);
+            else
+            {
+                if(ArrayManips.NoMovesLeft(dArr))
+                {
+                    InfoPopup popup = new InfoPopup(
+                        "Game Over",
+                        "There aren't any more moves left!");
+                }
+                Task.Run(async () =>
+                {
+                    if (!animating)
+                    {
+                        await FlickBackgroundColor();
+                    }
+                });
+            }
+
 
             DrawFrontend();
         }
@@ -121,6 +141,18 @@ namespace _2048.src
 
         Size        prevSize   = new(0, 0);
         const int   minWinSize = Constants.MinWinSize;
+
+
+        private async Task FlickBackgroundColor()
+        {
+            Color temp = tableLayoutPanel1.BackColor;
+            Color flickColor = Constants.ColorFlick;
+            animating = true;
+            tableLayoutPanel1.BackColor = flickColor;
+            await Task.Delay(200);
+            tableLayoutPanel1.BackColor = temp;
+            animating = false;
+        }
 
         /// <summary>
         /// Count the digits of a number (ex. 202 = 3)

@@ -29,7 +29,9 @@ namespace _2048.src.Backend
     {
         private const string    gameName           = "2048_VulpesDev";
         private const string    savefileName       = "savegame.json";
+        private const string    scorefileName      = "highscore.txt";
         private static string   default_info_title = "Game Management Error";
+
         public static void SaveGameState(GameState gameState)
         {
             string jsonString = JsonSerializer.Serialize(gameState);
@@ -37,6 +39,7 @@ namespace _2048.src.Backend
             try
             {
                 File.WriteAllText(GetSaveFilePath(), jsonString);
+                File.WriteAllText(Path.Combine(GetDataPath(), scorefileName), Score.GetScoreBest().ToString());
             }
             catch (Exception ex)
             {
@@ -46,15 +49,23 @@ namespace _2048.src.Backend
         }
         public static GameState LoadGameState()
         {
+            uint        highScore  = 0;
             string      jsonString = null;
             GameState   gameState  = null;
             string      filePath   = GetSaveFilePath();
+            string      scorePath  = Path.Combine(GetDataPath(), scorefileName);
 
             if (!File.Exists(filePath))
                 return null;
             jsonString = File.ReadAllText(filePath);
             if (jsonString == null)
                 return null;
+            if (!File.Exists(scorePath))
+                return null;
+            if (uint.TryParse(File.ReadAllText(scorePath), out highScore))
+                Score.SetScoreBest(highScore);
+            else
+                Score.SetScoreBest(0);
 
             try
             {
@@ -67,21 +78,26 @@ namespace _2048.src.Backend
             }
             return gameState;
         }
-
         //The save file is saved in appdata in a folder named after the game
-        public static string GetSaveFilePath()
+        public static string GetDataPath()
         {
             string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), gameName);
             try
             {
                 Directory.CreateDirectory(folderPath);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 InfoPopup popup = new InfoPopup(
                         default_info_title, ex.Message);
             }
-            return Path.Combine(folderPath, savefileName);
+            return folderPath;
+        }
+
+        //The save file is saved in appdata in a folder named after the game
+        public static string GetSaveFilePath()
+        {
+            return Path.Combine(GetDataPath(), savefileName);
         }
         public static void StartGame()
         {

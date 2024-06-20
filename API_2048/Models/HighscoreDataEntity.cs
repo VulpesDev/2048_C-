@@ -14,7 +14,6 @@ namespace API_2048.Models
         public uint Score { get; set; }
 
         [Timestamp]
-        [BindNever]
-        public byte[] Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
     }
 }

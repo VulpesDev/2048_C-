@@ -18,16 +18,22 @@ namespace _2048.src
             return username;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonPlay_Click(object sender, EventArgs e)
         {
-            NewGameMessageBox newGameMessageBox = new NewGameMessageBox();
-
-            newGameMessageBox.ShowDialog();
             username = textBox1.Text;
             if (username == null || username == "" || username == " ")
             {
                 username = "Anonymous";
+                Console.WriteLine($"name :({username})");
             }
+            GameState gameState = GameManager.LoadGameState();
+            if (gameState != null)
+            {
+                NewGameMessageBox newGameMessageBox = new NewGameMessageBox();
+                newGameMessageBox.ShowDialog();
+            }
+            else
+                GameManager.StartGame();
         }
 
         private void FormMenu_Load(object sender, EventArgs e)
@@ -58,7 +64,7 @@ namespace _2048.src
             }
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void buttonBack_Click(object sender, EventArgs e)
         {
             panelWorldLeaderboard.Visible = false;
         }
@@ -70,5 +76,16 @@ namespace _2048.src
             if (!allowedChars.Contains(e.KeyChar) && !char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
+
+        private void buttonTop_Click(object sender, EventArgs e)
+        {
+            worldLeaderboardMenu1.LoadTopTen();
+        }
+
+        private void buttonLatest_Click(object sender, EventArgs e)
+        {
+            worldLeaderboardMenu1.LoadLastTen();
+        }
+
     }
 }

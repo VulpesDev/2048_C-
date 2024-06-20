@@ -96,7 +96,6 @@ F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\2048.pdb
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\Azure.Core.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\Azure.Identity.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\BouncyCastle.Cryptography.dll
-F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\dotenv.net.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\Google.Protobuf.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\K4os.Compression.LZ4.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\K4os.Compression.LZ4.Streams.dll
@@ -134,8 +133,7 @@ F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\Microsoft.SqlServer.Serv
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\Microsoft.Web.WebView2.Core.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\Microsoft.Web.WebView2.WinForms.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\Microsoft.Web.WebView2.Wpf.dll
-F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\MySqlConnector.dll
-F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\Pomelo.EntityFrameworkCore.MySql.dll
+F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\System.CodeDom.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\System.Configuration.ConfigurationManager.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\System.Diagnostics.DiagnosticSource.dll
@@ -165,7 +163,9 @@ F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\2048.csproj.AssemblyReference.cache
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.Properties.Resources.resources
+F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.src.FormGame.resources
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.src.FormMenu.resources
+F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.InfoPopup.resources
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.src.NewGameMessageBox.resources
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.src.WorldLeaderboardMenu.resources
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\2048.csproj.GenerateResource.cache
@@ -177,6 +177,3 @@ F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\refint\2048.dll
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\2048.pdb
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\2048.genruntimeconfig.cache
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\ref\2048.dll
-F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
-F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.InfoPopup.resources
-F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.src.FormGame.resources

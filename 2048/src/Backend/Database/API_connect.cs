@@ -83,6 +83,38 @@ namespace _2048.src.Backend.Database
             }
             return topScores;
         }
+
+        public static async Task<Highscore> GetTopTodayScore()
+        {
+            Highscore       topScore  = null;
+            HttpClient      client    = new();
+            string          apiUrl    = "https://localhost:4242/api/HighscoreData/toptoday";
+
+            try
+            {
+                var response = await client.GetAsync(apiUrl);
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonString = await response.Content.ReadAsStringAsync();
+                    topScore = JsonConvert.DeserializeObject<Highscore>(jsonString);
+                }
+                else
+                {
+                    InfoPopup popup = new InfoPopup(
+                        default_info_title,
+                        "Failed to retrieve top score: " + response.StatusCode);
+                }
+            }
+            catch (Exception ex)
+            {
+                InfoPopup popup = new InfoPopup(
+                        default_info_title,
+                        "Unknown error: " + ex.Message);
+            }
+            return topScore;
+        }
+
+
         #endregion
 
         /// <summary> region PostMethodCalls
@@ -104,11 +136,13 @@ namespace _2048.src.Backend.Database
                 var response = await client.PostAsync(apiUrl, content);
                 if (response.IsSuccessStatusCode)
                 {
+                    Highscore topToday = await GetTopTodayScore();
                     InfoPopup popup = new InfoPopup(
                         "API Success",
                         $"Your score has been submitted!" +
-                        $"\r\n User: {player_name}" +
-                        $"\r\nScore: {scoreStr}");
+                        $"\r\n User: {player_name} {scoreStr}" +
+                        $"\r\n Your Personal Best: {Score.GetScoreBest()}" +
+                        $"\r\nTop Scorer Today: {topToday.PlayerName} {topToday.Score}");
                 }
                 else
                 {

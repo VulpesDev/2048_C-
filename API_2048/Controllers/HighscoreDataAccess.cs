@@ -50,6 +50,8 @@ namespace API_2048.Controllers
                 .OrderByDescending(h => h.Score)
                 .Take(10)
                 .ToList();
+            if (lastTenScores == null)
+                return NotFound();
             return Ok(topScores);
         }
 
@@ -60,7 +62,33 @@ namespace API_2048.Controllers
                 .OrderByDescending(h => h.Timestamp)
                 .Take(10)
                 .ToList();
+            if (lastTenScores == null)
+                return NotFound();
             return Ok(lastScores);
+        }
+
+        [HttpGet("toptoday")]
+        public ActionResult<Highscore> TopScoreToday()
+        {
+            TimeSpan localOffset = TimeSpan.FromHours(-3);
+
+            DateTime localToday = DateTime.Today.Add(localOffset);
+            DateTime localTomorrow = localToday.AddDays(1);
+
+            DateTime utcToday = localToday.ToUniversalTime();
+            DateTime utcTomorrow = localTomorrow.ToUniversalTime();
+
+            var topScoreToday = _context.Highscores
+                .Where(h => h.Timestamp >= utcToday && h.Timestamp < utcTomorrow)
+                .OrderByDescending(h => h.Score)
+                .FirstOrDefault();
+
+            if (topScoreToday == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(topScoreToday);
         }
     }
 }

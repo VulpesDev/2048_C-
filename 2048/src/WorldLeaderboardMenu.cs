@@ -18,9 +18,21 @@ namespace _2048.src
             InitializeComponent();
         }
 
-        public async void LoadData()
+        public void LoadData()
         {
-            List<Highscore> data    = await API_connect.GetTopTenScores();
+            LoadTopTen();
+        }
+
+        public async void LoadTopTen()
+        {
+            List<Highscore> data = await API_connect.GetTopTenScores();
+
+            InsertDataInTable(data);
+        }
+
+        public async void LoadLastTen()
+        {
+            List<Highscore> data = await API_connect.GetLastTenScores();
 
             InsertDataInTable(data);
         }
@@ -48,7 +60,7 @@ namespace _2048.src
                     }
                     else
                     {
-                        throw new Exception("Table layout panel is incorrect");
+                        //just don't display anything
                     }
                 }
             }

@@ -300,6 +300,7 @@ namespace _2048.src
             try
             {
                 Score.WriteScoreValue(scoreValueLabel);
+                Score.WriteScoreBestValue(scoreBestValueLabel);
                 WriteIntValuesToLabels(dArr, tableLayoutPanel1);
                 UI_Management();
             }
@@ -346,7 +347,7 @@ namespace _2048.src
 
         private void FormGame_Resize(object sender, EventArgs e)
         {
-            UI_Management();
+            DrawFrontend();
         }
 
         private void FormGame_ResizeEnd(object sender, EventArgs e)

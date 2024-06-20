@@ -41,6 +41,7 @@ namespace _2048
             }
             return probabilities[0];
         }
+
         /// <summary>
         /// Generates a randomly picked tile value in randomly picked cooridnates
         /// </summary>
@@ -62,12 +63,12 @@ namespace _2048
             if (emptyCells.Count > 0)
             {
                 int index = random.Next(0, emptyCells.Count);
-                int x = emptyCells[index].Row;
-                int y = emptyCells[index].Column;
+                int x     = emptyCells[index].Row;
+                int y     = emptyCells[index].Column;
+
                 board[x][y] = GenerateRandomTileValue();
                 return;
             }
-
             throw new InvalidOperationException("No empty cells available on the board.");
         }
     }

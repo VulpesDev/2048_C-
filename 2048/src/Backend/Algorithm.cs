@@ -92,12 +92,15 @@ namespace _2048
         /// <returns> True if anything on board changed </returns>
         public static bool VericalManage(int[][] dArr, bool reverse)
         {
-            bool    value = false;
-            int     rows  = dArr.Length;
+            int[] temp_colum = null;
+            bool    value    = false;
+            int     rows     = dArr.Length;
 
             for (int col = 0; col < dArr[0].Length; col++)
             {
-                int[] temp_colum = new int[rows];
+                temp_colum = new int[rows];
+                if (temp_colum == null) return value;
+                
                 for (int row = 0; row < rows; row++)
                     temp_colum[row] = dArr[row][col];
 

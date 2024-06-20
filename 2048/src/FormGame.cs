@@ -201,8 +201,8 @@ namespace _2048.src
         private void PaintColorElements()
         {
             Control     control = null;
-            LabelStyle  style  = null;
-            int         number = 0;
+            LabelStyle  style   = null;
+            int         number  = 0;
 
             for (int row = 0; row < tableLayoutPanel1.RowCount; row++)
             {
@@ -243,9 +243,19 @@ namespace _2048.src
         }
         public void DrawFrontend()
         {
-            Score.WriteScoreValue(scoreValueLabel);
-            WriteIntValuesToLabels(dArr, tableLayoutPanel1);
-            UI_Management();
+            try
+            {
+                Score.WriteScoreValue(scoreValueLabel);
+                WriteIntValuesToLabels(dArr, tableLayoutPanel1);
+                UI_Management();
+            }
+            catch (Exception ex)
+            {
+                InfoPopup info = new InfoPopup(
+                    "Draw Frontend Error",
+                    ex.Message,
+                    true);
+            }
         }
         #endregion
 

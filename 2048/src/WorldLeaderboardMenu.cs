@@ -20,23 +20,25 @@ namespace _2048.src
 
         public async void LoadData()
         {
-            API_connect connect = new();
-            List<Highscore> data = await connect.GetTopTenScores();
+            List<Highscore> data    = await API_connect.GetTopTenScores();
+
             InsertDataInTable(data);
         }
 
         private void InsertDataInTable(List<Highscore> data)
         {
+            Control control = null;
+            int     rows    = tableLayoutPanel1.RowCount;
+            int     cols    = tableLayoutPanel1.ColumnCount;
+            
             if (data == null)
                 return;
-            int rows = tableLayoutPanel1.RowCount;
-            int cols = tableLayoutPanel1.ColumnCount;
 
             for (int row = 1; row < rows; row++)
             {
                 for (int col = 1; col < cols; col++)
                 {
-                    Control control = tableLayoutPanel1.GetControlFromPosition(col, row);
+                    control = tableLayoutPanel1.GetControlFromPosition(col, row);
                     if (control is Label label && row - 1 < data.Count())
                     {
                         if (col == 1)
@@ -46,6 +48,7 @@ namespace _2048.src
                     }
                     else
                     {
+                        throw new Exception("Table layout panel is incorrect");
                     }
                 }
             }

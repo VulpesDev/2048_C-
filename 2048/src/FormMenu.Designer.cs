@@ -64,7 +64,6 @@
             this.buttonHScore.TabIndex = 1;
             this.buttonHScore.Text = "Local Leaderboard";
             this.buttonHScore.UseVisualStyleBackColor = true;
-            this.buttonHScore.Click += new System.EventHandler(this.buttonHScore_Click);
             // 
             // buttonWHScore
             // 
@@ -130,7 +129,6 @@
             this.textBox1.Size = new System.Drawing.Size(135, 23);
             this.textBox1.TabIndex = 4;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // label1

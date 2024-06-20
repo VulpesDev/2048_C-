@@ -14,7 +14,8 @@ namespace _2048
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            FormMenu formMenu = new FormMenu();
+
+            FormMenu formMenu = new();
             Application.Run(formMenu);
         }
 

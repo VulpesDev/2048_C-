@@ -14,15 +14,17 @@ namespace _2048.src.Backend.Database
     /// of API actions(on success or general info)
     /// and, if any, errors that occur in the API.
     /// </summary>
-    internal class API_connect
+    internal static class API_connect
     {
+        private static string default_info_title = "API error";
+
         /// <summary> region GetMethodCalls
         /// This region contains get request
         /// </summary>
         /// <returns>Most of them (all of them for now) List of Highscores (simple class / more like a struct)</returns>
 
         #region GetMethodCalls
-        public async Task<List<Highscore>> GetLastTenScores()
+        public static async Task<List<Highscore>> GetLastTenScores()
         {
             List<Highscore> lastScores = null;
             HttpClient      client     = new();
@@ -38,24 +40,21 @@ namespace _2048.src.Backend.Database
                 }
                 else
                 {
-                    InfoPopup popup = new(
-                        "API error",
-                        "Failed to retrieve last ten scores: " + response.StatusCode
-                        );
-                    popup.Show();
+                    InfoPopup popup = new InfoPopup(
+                        default_info_title,
+                        "Failed to retrieve last ten scores: " + response.StatusCode);
                 }
             }
             catch (Exception ex)
             {
-                InfoPopup popup = new(
-                        "API error",
-                        "Unknown error: " + ex.Message
-                        );
+                InfoPopup popup = new InfoPopup(
+                        default_info_title,
+                        "Unknown error: " + ex.Message);
             }
             return lastScores;
         }
 
-        public async Task<List<Highscore>> GetTopTenScores()
+        public static async Task<List<Highscore>> GetTopTenScores()
         {
             List<Highscore> topScores = null;
             HttpClient      client    = new();
@@ -67,23 +66,20 @@ namespace _2048.src.Backend.Database
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonString = await response.Content.ReadAsStringAsync();
-                     topScores = JsonConvert.DeserializeObject<List<Highscore>>(jsonString);
+                    topScores = JsonConvert.DeserializeObject<List<Highscore>>(jsonString);
                 }
                 else
                 {
-                    InfoPopup popup = new(
-                            "API error",
-                            "Failed to retrieve top ten scores: " + response.StatusCode,
-                            "OK"
-                            );
+                    InfoPopup popup = new InfoPopup(
+                        default_info_title,
+                        "Failed to retrieve top ten scores: " + response.StatusCode);
                 }
             }
             catch (Exception ex)
             {
-                InfoPopup popup = new(
-                        "API error",
-                        "Unknown error: " + ex.Message
-                        );
+                InfoPopup popup = new InfoPopup(
+                        default_info_title,
+                        "Unknown error: " + ex.Message);
             }
             return topScores;
         }
@@ -108,28 +104,27 @@ namespace _2048.src.Backend.Database
                 var response = await client.PostAsync(apiUrl, content);
                 if (response.IsSuccessStatusCode)
                 {
-                    InfoPopup popup = new(
-                        "API Success",
-                        $"Your score has been submitted!\r\n User: {player_name}\r\nScore: {scoreStr}"
-                        );
+                    InfoPopup popup = new InfoPopup(
+                        default_info_title,
+                        $"Your score has been submitted!" +
+                        $"\r\n User: {player_name}" +
+                        $"\r\nScore: {scoreStr}");
                 }
                 else
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
-                    InfoPopup popup = new(
-                        "API error",
+                    InfoPopup popup = new InfoPopup(
+                        default_info_title,
                         $"Failed to add highscore." +
                         $"\r\nStatus code: {response.StatusCode}" +
-                        $"\r\nResponse content: {responseContent}"
-                        );
+                        $"\r\nResponse content: {responseContent}");
                 }
             }
             catch (Exception ex)
             {
-                InfoPopup popup = new(
-                        "API error",
-                        "Unknown error: " + ex.Message
-                        );
+                InfoPopup popup = new InfoPopup(
+                       default_info_title,
+                       "Unknown error: " + ex.Message);
             }
         }
         #endregion

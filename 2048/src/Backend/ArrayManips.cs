@@ -12,14 +12,13 @@ namespace _2048
         static bool HasEmptyCell(int[][] board)
         {
             int size = board.GetLength(0);
+
             for (int row = 0; row < size; row++)
             {
                 for (int col = 0; col < size; col++)
                 {
                     if (board[row][col] == 0)
-                    {
                         return true;
-                    }
                 }
             }
             return false;
@@ -28,6 +27,7 @@ namespace _2048
         static bool CanMerge(int[][] board)
         {
             int size = board.GetLength(0);
+
             for (int row = 0; row < size; row++)
             {
                 for (int col = 0; col < size; col++)
@@ -67,9 +67,11 @@ namespace _2048
         }
         public static void ReverseArray(int[] array)
         {
+            int temp = 0;
+
             for (int i = 0; i < array.Length / 2; i++)
             {
-                int temp = array[i];
+                temp = array[i];
                 array[i] = array[array.Length - 1 - i];
                 array[array.Length - 1 - i] = temp;
             }

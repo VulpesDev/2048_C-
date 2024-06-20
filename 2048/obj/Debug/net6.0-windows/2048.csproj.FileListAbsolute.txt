@@ -165,7 +165,6 @@ F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\2048.csproj.AssemblyReference.cache
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.Properties.Resources.resources
-F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.FormGame.resources
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.src.FormMenu.resources
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.src.NewGameMessageBox.resources
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.src.WorldLeaderboardMenu.resources
@@ -180,3 +179,4 @@ F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\2048.genruntimeconfig.ca
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\ref\2048.dll
 F:\Project\Game\2048reset\2048\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.InfoPopup.resources
+F:\Project\Game\2048reset\2048\obj\Debug\net6.0-windows\_2048.src.FormGame.resources

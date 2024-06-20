@@ -1,6 +1,8 @@
-﻿namespace _2048.src.Backend
+﻿using System.Windows.Forms;
+
+namespace _2048.src.Backend
 {
-    public class Score
+    public static class Score
     {
         private static uint score = 0;
 
@@ -17,6 +19,11 @@
         public static void AddToScore(uint addition)
         {
             score += addition;
+        }
+
+        public static void WriteScoreValue(Label scoreLabel)
+        {
+            scoreLabel.Text = GetScore().ToString();
         }
     }
 }

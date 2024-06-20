@@ -15,6 +15,12 @@ namespace _2048.src.Backend
     {
         public int[][] Board { get; set; }
         public uint Score { get; set; }
+
+        public GameState(int[][] board, uint score)
+        {
+            Board = board;
+            Score = score;
+        }
     }
     /// <summary>
     /// Manages the game information (when to start or stop the game or game information(save files))

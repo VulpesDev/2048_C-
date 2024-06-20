@@ -14,11 +14,16 @@ namespace _2048.src
 {
     public partial class FormMenu : Form
     {
-        public static string username;
+        private static string username;
         public FormMenu()
         {
             InitializeComponent();
             this.MaximizeBox = false;
+        }
+
+        public static string GetUsername()
+        {
+            return username;
         }
 
         private void button1_Click(object sender, EventArgs e)

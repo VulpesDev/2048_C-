@@ -6,5 +6,11 @@
         public string PlayerName { get; set; }
         public uint Score { get; set; }
 
+        public Highscore() { ; }
+        public Highscore(string playername, uint score)
+        {
+            PlayerName = playername;
+            Score = score;
+        }
     }
 }

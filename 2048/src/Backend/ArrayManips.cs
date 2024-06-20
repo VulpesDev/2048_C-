@@ -8,6 +8,44 @@ namespace _2048
         {
             return board[row][col] == 0;
         }
+
+        static bool HasEmptyCell(int[][] board)
+        {
+            int size = board.GetLength(0);
+            for (int row = 0; row < size; row++)
+            {
+                for (int col = 0; col < size; col++)
+                {
+                    if (board[row][col] == 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        static bool CanMerge(int[][] board)
+        {
+            int size = board.GetLength(0);
+            for (int row = 0; row < size; row++)
+            {
+                for (int col = 0; col < size; col++)
+                {
+                    if (col < size - 1 && board[row][col] == board[row][col + 1])
+                        return true;
+                    if (row < size - 1 && board[row][col] == board[row + 1][col])
+                        return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool NoMovesLeft(int[][] board)
+        {
+            return !HasEmptyCell(board) && !CanMerge(board);
+        }
+
         public static void PrintArray(int[] array)
         {
             foreach (var num in array)

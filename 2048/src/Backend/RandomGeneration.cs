@@ -69,7 +69,9 @@ namespace _2048
                 board[x][y] = GenerateRandomTileValue();
                 return;
             }
-            throw new InvalidOperationException("No empty cells available on the board.");
+            InfoPopup popup = new InfoPopup(
+                "Random Generator Failed!",
+                "No empty cells available on the board.");
         }
     }
 }

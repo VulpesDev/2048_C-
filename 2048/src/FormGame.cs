@@ -192,7 +192,38 @@ namespace _2048.src
                 this.Size = new Size(Math.Max(this.Width, minWinSize), Math.Max(this.Height, minWinSize));
         }
 
-        public static readonly Dictionary<int, LabelStyle> numberStyles = Constants.NumberStyles;
+        private static readonly Dictionary<int, LabelStyle> numberStyles = Constants.NumberStyles;
+
+        /// <summary>
+        /// A cool way to also calculate color values after 2048,
+        /// since the game continues
+        /// </summary>
+        private static LabelStyle GetLargestDelimiter(Dictionary<int, LabelStyle> styles, int number)
+        {
+            int          count      = 2;
+            List<int>    sortedKeys = null;
+
+            if (number > 2048)
+            {
+                while (number > 2048)
+                {
+                    number -= 2048;
+                    count++;
+
+                }
+                if (count % 2 != 0)
+                    count--;
+                number = count;
+                sortedKeys = styles.Keys.OrderByDescending(x => x).ToList();
+
+                foreach (var key in sortedKeys)
+                {
+                    if (number % key == 0)
+                        return styles.ContainsKey(key) ? styles[key] : styles[2];
+                }
+            }
+            return styles.ContainsKey(number) ? styles[number] : styles[2];
+        }
 
         /// <summary>
         /// Paint's foreground and background at the lables corresponding to
@@ -214,21 +245,12 @@ namespace _2048.src
                         if (label.Text != " " && int.TryParse(label.Text, out number))
                                 number = Convert.ToInt32(label.Text);
 
-                        if (numberStyles.ContainsKey(number))
-                        {
-                            style = numberStyles[number];
-                            label.ForeColor = style.ForegroundColor;
-                            label.BackColor = style.BackgroundColor;
-                            label.Font = style.Font;
-                            if (label.Text == "0")
-                                label.Text = " ";
-                        }
-                        else
-                        {
-                            label.ForeColor = Color.Black;
-                            label.BackColor = SystemColors.Control;
-                            label.Font = new Font("Arial", 16, FontStyle.Regular);
-                        }
+                        style = GetLargestDelimiter(numberStyles, number);
+                        label.ForeColor = style.ForegroundColor;
+                        label.BackColor = style.BackgroundColor;
+                        label.Font = style.Font;
+                        if (label.Text == "0")
+                            label.Text = " ";
                     }
                 }
             }

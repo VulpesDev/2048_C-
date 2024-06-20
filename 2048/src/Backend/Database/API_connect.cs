@@ -105,7 +105,7 @@ namespace _2048.src.Backend.Database
                 if (response.IsSuccessStatusCode)
                 {
                     InfoPopup popup = new InfoPopup(
-                        default_info_title,
+                        "API Success",
                         $"Your score has been submitted!" +
                         $"\r\n User: {player_name}" +
                         $"\r\nScore: {scoreStr}");
